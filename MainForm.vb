@@ -143,7 +143,9 @@ Public Class MainForm
         Next
         'Settings
         If Not File.Exists(AppPath + "data.dat") Then
-            IO.File.Copy(AppPath + "restore.dat", AppPath + "data.dat")
+            If File.Exists(AppPath + "restore.dat") Then
+                IO.File.Copy(AppPath + "restore.dat", AppPath + "data.dat")
+            End If
         End If
         SettingsPath = AppPath + "data.dat"
         PatchSetting("USE_EXTERNAL_SCRIPT_EDITOR", "0")
